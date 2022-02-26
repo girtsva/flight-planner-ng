@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AdminFlightService } from '../../shared/services/admin-flight.service';
+import { AdminFlightService } from '../../../shared/services/admin-flight.service';
 
 @Component({
-  selector: 'app-flight-form',
-  templateUrl: './flight-form.component.html',
-  styleUrls: ['./flight-form.component.scss']
+  selector: 'app-flight-add',
+  templateUrl: './flight-add.component.html',
+  styleUrls: ['./flight-add.component.scss']
 })
-export class FlightFormComponent implements OnInit {
+export class FlightAddComponent implements OnInit {
   flightForm = new FormGroup({})
 
   constructor(private fb: FormBuilder, private adminFlightService: AdminFlightService) { }
@@ -35,7 +35,6 @@ export class FlightFormComponent implements OnInit {
   }
 
   submitForm(): void {
-    console.log(this.flightForm.value)
     this.adminFlightService.addFlight(this.flightForm.value).subscribe()
   }
 }

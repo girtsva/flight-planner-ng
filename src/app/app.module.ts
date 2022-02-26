@@ -12,15 +12,23 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FlightSearchComponent } from './pages/flight-search/flight-search.component';
-import { FlightFormComponent } from './pages/flight-form/flight-form.component';
+import { FlightSearchComponent } from './pages/public/flight-search/flight-search.component';
+import { FlightAddComponent } from './pages/admin/flight-add/flight-add.component';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { PublicComponent } from './pages/public/public.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { FlightFindComponent } from './pages/admin/flight-find/flight-find.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FlightSearchComponent,
-    FlightFormComponent
+    FlightAddComponent,
+    PublicComponent,
+    AdminComponent,
+    HeaderComponent,
+    FlightFindComponent
   ],
   imports: [
     BrowserModule,
