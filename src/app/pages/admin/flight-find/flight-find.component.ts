@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Flight } from 'src/app/shared/models/flight.model';
+import { AdminFlightService } from 'src/app/shared/services/admin-flight.service';
 
 @Component({
   selector: 'app-flight-find',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlightFindComponent implements OnInit {
 
-  constructor() { }
+  findFlightForm = new FormGroup({});
+  flight$?: Observable<Flight>;
+
+  constructor(private fb: FormBuilder, private adminFlightService: AdminFlightService) { }
 
   ngOnInit(): void {
+    this.buildForm();
+  }
+
+  buildForm(): void {
+    this.findFlightForm = this.fb.group({
+      id: ''
+    })
+  }
+
+  submit(): void {
+    this.flight$ = this.adminFlightService.findFlight(this.findFlightForm.value.id)
   }
 
 }

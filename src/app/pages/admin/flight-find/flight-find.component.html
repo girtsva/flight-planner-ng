@@ -1,1 +1,31 @@
-<p>flight-find works!</p>
+<section class="find-flight-section">
+  <div class="find-flight-form-wrapper">
+    <form [formGroup]="findFlightForm" class="find-flight-form">
+      <mat-form-field appearance="outline">
+        <mat-label>ID</mat-label>
+        <input formControlName="id" matInput>
+        <button (click)="submit()" matSuffix mat-button>
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+  </div>
+
+
+  <div class="flight-card-wrapper">
+    <mat-card *ngIf="flight$ | async as flight" class="flight-card">
+      <mat-card-title>
+        {{ flight.from.city + ', ' + flight.from.country + ' - ' + flight.to.city + ', ' + flight.to.country }}
+      </mat-card-title>
+      <mat-card-subtitle>{{ flight.from.airport + ' - ' + flight.to.airport }}</mat-card-subtitle>
+      <mat-card-content>
+        <div>Departure Time: {{ flight.departureTime | date: 'dd-MMM YYYY HH:mm'}}</div>
+        <div>Arrival Time: {{ flight.arrivalTime | date: 'dd-MMM YYYY HH:mm'}}</div>
+        <div>Carrier: {{ flight.carrier }}</div>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button>Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>

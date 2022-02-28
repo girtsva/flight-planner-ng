@@ -1,10 +1,10 @@
-<div class="flight-search-form-section">
-    <h1 class="flight-search-form-title">Add flight</h1>
-    <div class="flight-search-form-wrapper">
-      <form class="flight-search-form" [formGroup]="flightForm">
+<div class="flight-add-form-section">
+    <h1 class="flight-add-form-title">Add flight</h1>
+    <div class="flight-add-form-wrapper">
+      <form class="flight-add-form" [formGroup]="flightForm">
   
-        <div formGroupName="from">
-          <h3>From</h3>
+        <h3>From</h3>
+        <div class="form-group" formGroupName="from">
           <mat-form-field appearance="outline">
             <mat-label>Country</mat-label>
             <input formControlName="country" matInput>
@@ -21,8 +21,8 @@
           </mat-form-field>
         </div>
   
-        <div formGroupName="to">
-          <h3>To</h3>
+        <h3>To</h3>
+        <div class="form-group" formGroupName="to">
           <mat-form-field appearance="outline">
             <mat-label>Country</mat-label>
             <input formControlName="country" matInput>
@@ -55,7 +55,7 @@
           <mat-date-range-picker #picker></mat-date-range-picker>
         </mat-form-field>
   
-        <button (click)="submitForm()" mat-raised-button color="primary">Search</button>
+        <button (click)="submitForm()" mat-raised-button color="primary">Add</button>
       </form>
     </div>
 </div>

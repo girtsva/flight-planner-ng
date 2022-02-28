@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { AdminFlightService } from '../../../shared/services/admin-flight.service';
 
 @Component({
@@ -7,8 +8,9 @@ import { AdminFlightService } from '../../../shared/services/admin-flight.servic
   templateUrl: './flight-add.component.html',
   styleUrls: ['./flight-add.component.scss']
 })
-export class FlightAddComponent implements OnInit {
-  flightForm = new FormGroup({})
+export class FlightAddComponent implements OnInit, OnDestroy {
+  flightForm = new FormGroup({});
+  flightAddSubscription$?: Subscription;
 
   constructor(private fb: FormBuilder, private adminFlightService: AdminFlightService) { }
 
@@ -16,25 +18,31 @@ export class FlightAddComponent implements OnInit {
     this.buildForm();
   }
 
+  ngOnDestroy(): void {
+      this.flightAddSubscription$?.unsubscribe();
+  }
+
   buildForm(): void {
     this.flightForm = this.fb.group({
       from: this.fb.group({
-        country: [''],
-        city: [''],
-        airport: ['']
+        country: ['', Validators.required],
+        city: ['', Validators.required],
+        airport: ['', Validators.required]
       }),
       to: this.fb.group({
-        country: [''],
-        city: [''],
-        airport: ['']
+        country: ['', Validators.required],
+        city: ['', Validators.required],
+        airport: ['', Validators.required]
       }),
-      carrier: [''],
-      departureTime: [''],
-      arrivalTime: ['']
+      carrier: ['', Validators.required],
+      departureTime: ['', Validators.required],
+      arrivalTime: ['', Validators.required]
     })
   }
 
   submitForm(): void {
-    this.adminFlightService.addFlight(this.flightForm.value).subscribe()
+    if(this.flightForm.valid) {
+      this.flightAddSubscription$ = this.adminFlightService.addFlight(this.flightForm.value).subscribe()
+    }
   }
 }

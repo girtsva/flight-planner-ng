@@ -19,6 +19,11 @@ import { PublicComponent } from './pages/public/public.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FlightFindComponent } from './pages/admin/flight-find/flight-find.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { ToastrModule } from 'ngx-toastr';
+import { FlightCardComponent } from './pages/public/flight-search/flight-card/flight-card.component';
+import { FlightSearchFormComponent } from './pages/public/flight-search/flight-search-form/flight-search-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,9 @@ import { FlightFindComponent } from './pages/admin/flight-find/flight-find.compo
     PublicComponent,
     AdminComponent,
     HeaderComponent,
-    FlightFindComponent
+    FlightFindComponent,
+    FlightCardComponent,
+    FlightSearchFormComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,11 @@ import { FlightFindComponent } from './pages/admin/flight-find/flight-find.compo
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {

@@ -9,25 +9,8 @@
     text-align: center;
 }
 
-.flight-search-form-wrapper {
+.flight-card-wrapper {
     display: flex;
     justify-content: center;
-}
-
-.flight-search-form {
-    display: flex;
-    //flex-direction: column;
-    //width: 500px;
-    padding: 20px 20px 0 20px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
-    border-radius: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    background-color: #393E46;
-    color: white;
-}
-
-.btn-search {
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
